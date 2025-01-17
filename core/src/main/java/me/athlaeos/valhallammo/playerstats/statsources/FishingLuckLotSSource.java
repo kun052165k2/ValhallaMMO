@@ -1,14 +1,14 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.ValhallaMMO;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
 import me.athlaeos.valhallammo.version.EnchantmentMappings;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-public class FishingLuckLotSSource implements AccumulativeStatSource {
+public class FishingLuckLotSSource implements StatSource {
     private final double fishingLuckLotS = ValhallaMMO.getPluginConfig().getDouble("fishing_luck_lots");
 
     @Override

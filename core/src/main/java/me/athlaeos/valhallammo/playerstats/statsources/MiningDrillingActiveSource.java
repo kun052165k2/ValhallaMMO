@@ -1,6 +1,6 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.profiles.ProfileCache;
 import me.athlaeos.valhallammo.playerstats.profiles.implementations.MiningProfile;
 import me.athlaeos.valhallammo.skills.skills.SkillRegistry;
@@ -10,7 +10,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class MiningDrillingActiveSource implements AccumulativeStatSource {
+public class MiningDrillingActiveSource implements StatSource {
     @Override
     public double fetch(Entity statPossessor, boolean use) {
         MiningSkill miningSkill = SkillRegistry.isRegistered(MiningSkill.class) ? (MiningSkill) SkillRegistry.getSkill(MiningSkill.class) : null;

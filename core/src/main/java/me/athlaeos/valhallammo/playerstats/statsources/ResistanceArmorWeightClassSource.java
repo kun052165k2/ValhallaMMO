@@ -2,13 +2,13 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.ValhallaMMO;
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-public class ResistanceArmorWeightClassSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class ResistanceArmorWeightClassSource implements StatSource, RelativeStatSource {
     private final String key;
 
     public ResistanceArmorWeightClassSource(String key){

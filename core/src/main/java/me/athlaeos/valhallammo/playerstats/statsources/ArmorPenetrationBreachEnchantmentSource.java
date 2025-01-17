@@ -3,15 +3,13 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 import me.athlaeos.valhallammo.ValhallaMMO;
 import me.athlaeos.valhallammo.dom.Catch;
 import me.athlaeos.valhallammo.item.ItemBuilder;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
-import me.athlaeos.valhallammo.playerstats.EntityCache;
-import me.athlaeos.valhallammo.playerstats.EntityProperties;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.version.EnchantmentMappings;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-public class ArmorPenetrationBreachEnchantmentSource implements AccumulativeStatSource {
+public class ArmorPenetrationBreachEnchantmentSource implements StatSource {
     private final double penetrationPerLevel;
 
     public ArmorPenetrationBreachEnchantmentSource(boolean percentile){
@@ -22,15 +20,13 @@ public class ArmorPenetrationBreachEnchantmentSource implements AccumulativeStat
     }
 
     @Override
-    public double fetch(Entity statPossessor, boolean use) {
+    public double fetch(Entity statPossessor, ItemBuilder primaryItem, boolean use) {
         if (penetrationPerLevel == 0) return 0;
+        if (primaryItem == null) return 0;
         if (statPossessor instanceof LivingEntity l){
             Enchantment breach = ValhallaMMO.getNms().getEnchantment(EnchantmentMappings.BREACH);
             if (breach == null) return 0;
-            EntityProperties properties = EntityCache.getAndCacheProperties(l);
-            ItemBuilder mainHand = properties.getMainHand();
-            if (mainHand == null) return 0;
-            int level = mainHand.getMeta().getEnchantLevel(breach);
+            int level = primaryItem.getMeta().getEnchantLevel(breach);
             return penetrationPerLevel * level;
         }
         return 0;

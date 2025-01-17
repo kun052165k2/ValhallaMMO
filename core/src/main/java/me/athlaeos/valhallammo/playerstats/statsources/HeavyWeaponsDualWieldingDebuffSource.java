@@ -3,7 +3,7 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 import me.athlaeos.valhallammo.configuration.ConfigManager;
 import me.athlaeos.valhallammo.item.WeightClass;
 import me.athlaeos.valhallammo.localization.TranslationManager;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
 import me.athlaeos.valhallammo.utility.Utils;
@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.UUID;
 
-public class HeavyWeaponsDualWieldingDebuffSource implements AccumulativeStatSource {
+public class HeavyWeaponsDualWieldingDebuffSource implements StatSource {
     private final boolean enabled;
     private final double attackSpeedDebuffT1;
     private final double attackSpeedDebuffT2;

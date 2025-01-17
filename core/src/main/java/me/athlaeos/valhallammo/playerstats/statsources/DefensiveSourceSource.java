@@ -1,14 +1,14 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.playerstats.AccumulativeStatManager;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import org.bukkit.entity.Entity;
 
 /**
  * Yes, the name is intentionally bad, lol
  */
-public class DefensiveSourceSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class DefensiveSourceSource implements StatSource, RelativeStatSource {
     private final String source;
 
     public DefensiveSourceSource(String source){

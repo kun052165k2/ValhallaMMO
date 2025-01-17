@@ -2,15 +2,15 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.configuration.ConfigManager;
 import me.athlaeos.valhallammo.item.WeightClass;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class LightWeaponsDualWieldingImmunityReductionBuffSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class LightWeaponsDualWieldingImmunityReductionBuffSource implements StatSource, RelativeStatSource {
     private final boolean enabled;
     private final double immunityReductionBuff;
 

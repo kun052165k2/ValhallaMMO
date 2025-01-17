@@ -296,7 +296,7 @@ public class AccumulativeStatManager {
      * @param stat the stat to register new sources to
      * @param s the sources to add to the collector
      */
-    public static void register(String stat, AccumulativeStatSource... s){
+    public static void register(String stat, StatSource... s){
         StatCollector existingSource = sources.get(stat);
         if (existingSource == null) {
             existingSource = new StatCollectorBuilder().addSources(s).build();
@@ -305,7 +305,7 @@ public class AccumulativeStatManager {
         register(stat, existingSource);
     }
 
-    public static void registerOffensive(String stat, AccumulativeStatSource... s){
+    public static void registerOffensive(String stat, StatSource... s){
         StatCollector existingSource = sources.get(stat);
         if (existingSource == null) existingSource = new StatCollectorBuilder().addSources(s).setAttackerPossessive().build();
         else existingSource.getStatSources().addAll(Arrays.asList(s));
@@ -337,9 +337,9 @@ public class AccumulativeStatManager {
      */
     public static double getStats(String stat, Entity e, boolean use) {
         StatCollector collector = getStatCollector(stat);
-        Collection<AccumulativeStatSource> existingSources = collector.getStatSources();
+        Collection<StatSource> existingSources = collector.getStatSources();
         double value = 0;
-        for (AccumulativeStatSource s : existingSources){
+        for (StatSource s : existingSources){
             value += s.fetch(e, use);
         }
         if (!collector.isAttackerPossessive() && e instanceof LivingEntity l && !(l instanceof Player)) value += MonsterScalingManager.getStatValue(l, stat);
@@ -370,10 +370,10 @@ public class AccumulativeStatManager {
         if (e1 == null) return 0;
         if (e2 == null) return getStats(stat, e1, use);
         StatCollector collector = getStatCollector(stat);
-        Collection<AccumulativeStatSource> existingSources = collector.getStatSources();
+        Collection<StatSource> existingSources = collector.getStatSources();
         double value = 0;
-        for (AccumulativeStatSource s : existingSources){
-            if (s instanceof EvEAccumulativeStatSource os) value += os.fetch(e1, e2, use);
+        for (StatSource s : existingSources){
+            if (s instanceof RelativeStatSource os) value += os.fetch(e1, e2, use);
             else value += s.fetch(e1, use);
         }
         if (collector.isAttackerPossessive() && e2 instanceof LivingEntity l && !(l instanceof Player)) value += MonsterScalingManager.getStatValue(l, stat);

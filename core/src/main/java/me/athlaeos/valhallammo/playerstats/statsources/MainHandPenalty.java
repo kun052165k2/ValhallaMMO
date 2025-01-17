@@ -2,12 +2,12 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.item.ItemBuilder;
 import me.athlaeos.valhallammo.item.ItemSkillRequirements;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.utility.ItemUtils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class MainHandPenalty implements AccumulativeStatSource {
+public class MainHandPenalty implements StatSource {
     private final String statPenalty;
 
     public MainHandPenalty(String statPenalty){

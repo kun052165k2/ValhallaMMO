@@ -1,13 +1,13 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.potioneffects.CustomPotionEffect;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-public class PotionEffectSource implements AccumulativeStatSource {
+public class PotionEffectSource implements StatSource {
     private final String potionEffect;
     private final boolean negative;
 

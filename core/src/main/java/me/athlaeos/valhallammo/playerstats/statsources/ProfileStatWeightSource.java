@@ -2,7 +2,7 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
 import me.athlaeos.valhallammo.item.WeightClass;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.playerstats.format.StatFormat;
 import me.athlaeos.valhallammo.playerstats.profiles.Profile;
@@ -13,7 +13,7 @@ import me.athlaeos.valhallammo.utility.EntityUtils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class ProfileStatWeightSource implements AccumulativeStatSource {
+public class ProfileStatWeightSource implements StatSource {
     private final Class<? extends Profile> type;
     private final String stat;
     private final Class<? extends Number> numberType;

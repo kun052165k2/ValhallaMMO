@@ -1,6 +1,6 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.profiles.ProfileCache;
 import me.athlaeos.valhallammo.playerstats.profiles.implementations.MiningProfile;
 import org.bukkit.block.Block;
@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 /**
  * Reduces mining speed by a great amount if looking at a block the player can't mine
  */
-public class MiningUnbreakableBlocksSource implements AccumulativeStatSource {
+public class MiningUnbreakableBlocksSource implements StatSource {
     @Override
     public double fetch(Entity statPossessor, boolean use) {
         if (statPossessor instanceof Player p){

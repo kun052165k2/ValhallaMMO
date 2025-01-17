@@ -1,8 +1,8 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.entities.EntityClassification;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import me.athlaeos.valhallammo.playerstats.format.StatFormat;
 import me.athlaeos.valhallammo.playerstats.profiles.Profile;
 import me.athlaeos.valhallammo.playerstats.profiles.ProfileCache;
@@ -11,7 +11,7 @@ import me.athlaeos.valhallammo.skills.skills.SkillRegistry;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class ProfileStatAttackerVictimClassSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class ProfileStatAttackerVictimClassSource implements StatSource, RelativeStatSource {
     private final Class<? extends Profile> type;
     private final String stat;
     private final Class<? extends Number> numberType;

@@ -3,8 +3,8 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 import me.athlaeos.valhallammo.item.ArmorSet;
 import me.athlaeos.valhallammo.item.ArmorSetRegistry;
 import me.athlaeos.valhallammo.item.WeightClass;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import me.athlaeos.valhallammo.utility.EntityUtils;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Entity;
@@ -12,7 +12,7 @@ import org.bukkit.entity.LivingEntity;
 
 import java.util.Collection;
 
-public class VanillaAttributeDefenderSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class VanillaAttributeDefenderSource implements StatSource, RelativeStatSource {
     private final String attribute;
     private final AttributeModifier.Operation operation;
     private WeightClass weightClass = null;

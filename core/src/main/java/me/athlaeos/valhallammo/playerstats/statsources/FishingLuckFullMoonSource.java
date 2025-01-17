@@ -3,10 +3,10 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 import me.athlaeos.valhallammo.ValhallaMMO;
 import me.athlaeos.valhallammo.dom.DayTime;
 import me.athlaeos.valhallammo.dom.MoonPhase;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import org.bukkit.entity.Entity;
 
-public class FishingLuckFullMoonSource implements AccumulativeStatSource {
+public class FishingLuckFullMoonSource implements StatSource {
     private final double fishingLuckFullMoon = ValhallaMMO.getPluginConfig().getDouble("fishing_luck_fullmoon");
 
     @Override

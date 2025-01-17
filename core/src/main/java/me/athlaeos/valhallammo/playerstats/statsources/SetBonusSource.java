@@ -2,13 +2,13 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.item.ArmorSet;
 import me.athlaeos.valhallammo.item.ArmorSetRegistry;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
 import java.util.Collection;
 
-public class SetBonusSource implements AccumulativeStatSource {
+public class SetBonusSource implements StatSource {
     private final String attribute;
     private final boolean negative;
 

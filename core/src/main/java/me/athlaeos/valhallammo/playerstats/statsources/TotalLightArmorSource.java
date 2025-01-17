@@ -1,12 +1,12 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.playerstats.AccumulativeStatManager;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
-public class TotalLightArmorSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class TotalLightArmorSource implements StatSource, RelativeStatSource {
     @Override
     public double fetch(Entity statPossessor, boolean use) {
         if (statPossessor instanceof LivingEntity v){

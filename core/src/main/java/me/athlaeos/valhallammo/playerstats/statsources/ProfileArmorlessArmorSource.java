@@ -1,15 +1,15 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import me.athlaeos.valhallammo.playerstats.profiles.ProfileCache;
 import me.athlaeos.valhallammo.playerstats.profiles.implementations.PowerProfile;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class ProfileArmorlessArmorSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class ProfileArmorlessArmorSource implements StatSource, RelativeStatSource {
 
     @Override
     public double fetch(Entity p, boolean use) {

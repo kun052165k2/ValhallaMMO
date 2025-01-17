@@ -1,10 +1,10 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.utility.GlobalEffect;
 import org.bukkit.entity.Entity;
 
-public class GlobalBuffSource implements AccumulativeStatSource {
+public class GlobalBuffSource implements StatSource {
     private final String buff;
     public GlobalBuffSource(String buff){
         this.buff = buff;

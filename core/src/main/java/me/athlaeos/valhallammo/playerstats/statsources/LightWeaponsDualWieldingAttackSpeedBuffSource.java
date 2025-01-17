@@ -2,14 +2,14 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.configuration.ConfigManager;
 import me.athlaeos.valhallammo.item.WeightClass;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import me.athlaeos.valhallammo.playerstats.EntityCache;
 import me.athlaeos.valhallammo.playerstats.EntityProperties;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public class LightWeaponsDualWieldingAttackSpeedBuffSource implements AccumulativeStatSource {
+public class LightWeaponsDualWieldingAttackSpeedBuffSource implements StatSource {
     private final boolean enabled;
     private final double attackSpeedBuff;
 

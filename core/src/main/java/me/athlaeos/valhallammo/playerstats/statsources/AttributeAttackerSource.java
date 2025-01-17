@@ -3,8 +3,9 @@ package me.athlaeos.valhallammo.playerstats.statsources;
 import me.athlaeos.valhallammo.item.*;
 import me.athlaeos.valhallammo.item.item_attributes.AttributeWrapper;
 import me.athlaeos.valhallammo.listeners.InteractListener;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
-import me.athlaeos.valhallammo.playerstats.EvEAccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.CacheableRelativeStatSource;
+import me.athlaeos.valhallammo.playerstats.CacheableStatSource;
+import me.athlaeos.valhallammo.playerstats.RelativeStatSource;
 import me.athlaeos.valhallammo.utility.EntityUtils;
 import me.athlaeos.valhallammo.utility.ItemUtils;
 import org.bukkit.entity.Entity;
@@ -13,8 +14,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
-public class AttributeAttackerSource implements AccumulativeStatSource, EvEAccumulativeStatSource {
+public class AttributeAttackerSource implements CacheableRelativeStatSource {
     private final String attribute;
     private WeightClass weightClass = null;
     private String statPenalty = null;
@@ -52,7 +56,8 @@ public class AttributeAttackerSource implements AccumulativeStatSource, EvEAccum
     }
 
     @Override
-    public double fetch(Entity victim, Entity attackedBy, boolean use) {
+    public double fetch(Entity victim, Entity attackedBy, ItemBuilder primaryItem, boolean use) {
+        if (cache.containsKey(attackedBy.getUniqueId())) return cache.get(attackedBy.getUniqueId());
         double value = 0;
         LivingEntity trueAttacker = attackedBy instanceof LivingEntity a ? a : (attackedBy instanceof Projectile p && p.getShooter() instanceof LivingEntity l ? l : null);
         if (trueAttacker == null) return value;
@@ -80,7 +85,14 @@ public class AttributeAttackerSource implements AccumulativeStatSource, EvEAccum
     }
 
     @Override
-    public double fetch(Entity statPossessor, boolean use) {
+    public double fetch(Entity statPossessor, ItemBuilder primaryItem, boolean use) {
         return 0;
+    }
+
+    private final Map<UUID, Double> cache = new HashMap<>();
+
+    @Override
+    public void reset(Entity entity, Entity attacker) {
+        cache.remove(attacker.getUniqueId());
     }
 }

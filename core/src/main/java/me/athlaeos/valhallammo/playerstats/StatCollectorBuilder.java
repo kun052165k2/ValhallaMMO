@@ -21,7 +21,7 @@ public class StatCollectorBuilder {
         return this;
     }
 
-    public StatCollectorBuilder addSources(AccumulativeStatSource... sources){
+    public StatCollectorBuilder addSources(StatSource... sources){
         collector.getStatSources().addAll(Arrays.asList(sources));
         return this;
     }

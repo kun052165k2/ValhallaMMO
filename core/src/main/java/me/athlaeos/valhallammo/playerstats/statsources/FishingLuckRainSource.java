@@ -1,10 +1,10 @@
 package me.athlaeos.valhallammo.playerstats.statsources;
 
 import me.athlaeos.valhallammo.ValhallaMMO;
-import me.athlaeos.valhallammo.playerstats.AccumulativeStatSource;
+import me.athlaeos.valhallammo.playerstats.StatSource;
 import org.bukkit.entity.Entity;
 
-public class FishingLuckRainSource implements AccumulativeStatSource {
+public class FishingLuckRainSource implements StatSource {
     private final double fishingLuckRain = ValhallaMMO.getPluginConfig().getDouble("fishing_luck_rain");
 
     @Override

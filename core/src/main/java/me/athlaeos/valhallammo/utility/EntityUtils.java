@@ -178,7 +178,7 @@ public class EntityUtils {
         return updateProperties(equipment, e, getEquipment, getHands, getPotionEffects);
     }
 
-    public static double combinedAttributeValue(LivingEntity entity, String attribute, WeightClass weightFilter, String equipmentPenalty, boolean mainHandOnly){
+    public static double combinedAttributeValue(LivingEntity entity, String attribute, WeightClass weightFilter, String equipmentPenalty, ItemBuilder involvedHand){
         double total = 0;
         EntityProperties properties = EntityCache.getAndCacheProperties(entity);
         if (properties.getHelmet() != null && (weightFilter == null || WeightClass.getWeightClass(properties.getHelmet().getMeta()) == weightFilter))
@@ -190,9 +190,10 @@ public class EntityUtils {
         if (properties.getBoots() != null && (weightFilter == null || WeightClass.getWeightClass(properties.getBoots().getMeta()) == weightFilter))
             total += getValue(entity, equipmentPenalty, properties.getBoots().getMeta(), properties.getBootsAttributes(), attribute, null);
 
-        if (properties.getMainHand() != null && ItemUtils.usedMainHand(properties.getMainHand(), properties.getOffHand()))
-            total += getValue(entity, equipmentPenalty, properties.getMainHand().getMeta(), properties.getMainHandAttributes(), attribute, null);
-        else if (!mainHandOnly && properties.getOffHand() != null) total += getValue(entity, equipmentPenalty, properties.getOffHand().getMeta(), properties.getOffHandAttributes(), attribute, null);
+        if (involvedHand != null){
+            Map<String, AttributeWrapper> stats = ItemAttributesRegistry.getStats(involvedHand.getMeta(), false);
+            total += getValue(entity, equipmentPenalty, involvedHand.getMeta(), stats, attribute, null);
+        }
 
         for (ItemBuilder extra : properties.getMiscEquipment()){
             total += getValue(entity, equipmentPenalty, extra.getMeta(), properties.getMiscEquipmentAttributes().get(extra), attribute, null);
@@ -200,7 +201,7 @@ public class EntityUtils {
         return total;
     }
 
-    public static double combinedAttackerAttributeValue(LivingEntity entity, String attribute, WeightClass weightFilter, String equipmentPenalty, boolean mainHand){
+    public static double combinedAttackerAttributeValue(LivingEntity entity, String attribute, WeightClass weightFilter, String equipmentPenalty, ItemBuilder involvedHand){
         double total = 0;
         EntityProperties properties = EntityCache.getAndCacheProperties(entity);
         if (properties.getHelmet() != null && (weightFilter == null || WeightClass.getWeightClass(properties.getHelmet().getMeta()) == weightFilter))
@@ -212,10 +213,10 @@ public class EntityUtils {
         if (properties.getBoots() != null && (weightFilter == null || WeightClass.getWeightClass(properties.getBoots().getMeta()) == weightFilter))
             total += getValue(entity, equipmentPenalty, properties.getBoots().getMeta(), properties.getBootsAttributes(), attribute, null);
 
-        if (mainHand && properties.getMainHand() != null)
-            total += getValue(entity, equipmentPenalty, properties.getMainHand().getMeta(), properties.getMainHandAttributes(), attribute, null);
-        if (!mainHand && properties.getOffHand() != null)
-            total += getValue(entity, equipmentPenalty, properties.getOffHand().getMeta(), properties.getOffHandAttributes(), attribute, null);
+        if (involvedHand != null){
+            Map<String, AttributeWrapper> stats = ItemAttributesRegistry.getStats(involvedHand.getMeta(), false);
+            total += getValue(entity, equipmentPenalty, involvedHand.getMeta(), stats, attribute, null);
+        }
 
         for (ItemBuilder extra : properties.getMiscEquipment()){
             total += getValue(entity, equipmentPenalty, extra.getMeta(), properties.getMiscEquipmentAttributes().get(extra), attribute, null);
