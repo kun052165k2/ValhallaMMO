@@ -1,0 +1,34 @@
+package me.athlaeos.valhallammo.hooks;
+
+import me.athlaeos.valhallammo.ValhallaMMO;
+import studio.magemonkey.divinity.api.DivinityAPI;  // 引入 Divinity 插件的 API 類別
+
+public class DivinityHook extends PluginHook {
+    private DivinityAPI divinityAPI;  // Divinity 插件的 API 類型
+
+    // 构造方法
+    public DivinityHook() {
+        super("Divinity");  // 假设 Divinity 插件的名称是 "Divinity"
+        if (isPresent()) {
+            // 获取 Divinity 插件的 API 实例
+            this.divinityAPI = (DivinityAPI) ValhallaMMO.getInstance().getServer().getPluginManager().getPlugin("Divinity");
+        }
+    }
+
+    @Override
+    public void whenPresent() {
+        if (isPresent()) {
+            // 当 Divinity 插件存在时，执行的操作
+            System.out.println("Divinity 插件已加载，开始进行整合。");
+
+            // 假设 Divinity 插件有方法来设置伤害公式
+            // divinityAPI.setCustomDamageFormula();
+
+            // 根据 Divinity 插件的 API，你可以在这里执行进一步的自定义操作
+        }
+    }
+
+    public DivinityAPI getDivinityAPI() {
+        return divinityAPI;
+    }
+}
